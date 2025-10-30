@@ -4,6 +4,8 @@ body{
     justify-content: center;
     align-items: center;
     background-color:  #85b5db;
+    min-height: 100vh;
+    margin: 0;
 }
 .novo{
     border: 3px solid black;
@@ -21,30 +23,60 @@ body{
 }
 .entrada{
     width: 100%;
-    border-radius: 5px;
+    border-radius: 8px;
     text-align: center;
     margin-top: 20px;
     font-size: 15px;
-    border: #000000;
-    box-shadow: 4px 5px 4px;
+    border: none;
+    box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.5);
     padding: 15px;
+    box-sizing: border-box;
+}
+.campo_senha{
+    position: relative;
+    width: 100%;
+}
+.campo_senha.entrada{
+    padding-right: 50px;
+}
+.alternar_senha{
+    position: absolute;
+    margin-top: 13px;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font-size: 20px;
+    padding: 5px;
+}
+.alternar_senha:hover{
+    color: #000;
 }
 .campo{
     display: flex;
     flex-direction:column;
-    justify-content: right;
     align-items: center;
-    font-size: 18px; 
-    gap: 15px;
+    gap: 20px;
+    width: 100%;
+    max-width: 350px;
     margin-bottom: 30px;
 }
 #button{
     width: 200px;
     height: 50px;
     font-size: 20px;
-    margin-left: 15%;
-    border-radius: 5px;
+    border-radius: 8px;
     color: #fff;
-    border: #3987d0;
+    border: none;
     background-color:#3987d0;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+#button:hover{
+    background-color: #3275b8;
 }

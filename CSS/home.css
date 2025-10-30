@@ -201,7 +201,7 @@ button.dark-mode {
   font-size: 24px;
   padding: 10px 20px;
   border: none;
-  border-radius: 50%;
+  border-radius: 15px;
   background: #27187e;
   color: white;
   cursor: pointer;
@@ -209,7 +209,6 @@ button.dark-mode {
 }
 .add-note:hover {
   background: #27187e;
-  transform: rotate(90deg);
 }
 .open-notes-btn {
   position: fixed;

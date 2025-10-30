@@ -1,123 +1,110 @@
-// ../JS/login.js
 document.addEventListener('DOMContentLoaded', () => {
+  // Limpa qualquer dado antigo de sessão
+  localStorage.removeItem('id');
+  localStorage.removeItem('email');
+  localStorage.removeItem('nome');
+
   const form = document.querySelector('form');
   if (!form) {
     console.error('Formulário não encontrado na página.');
     return;
   }
 
-  const emailInput = form.querySelector('input[type="email"]');
-  const passwordInput = form.querySelector('input[type="password"]');
+  const emailInput = form.querySelector('#email');
+  const passwordInput = form.querySelector('#senha');
 
   if (!emailInput || !passwordInput) {
-    console.error('Inputs tipo email/password não encontrados. Verifique o HTML.');
+    console.error('Inputs tipo email/senha não encontrados. Verifique o HTML.');
     return;
   }
 
-  // cria elemento de mensagem se não existir
+  // Cria elemento de mensagem se não existir
   let messageEl = document.getElementById('loginMessage');
   if (!messageEl) {
     messageEl = document.createElement('p');
     messageEl.id = 'loginMessage';
     messageEl.setAttribute('aria-live', 'polite');
-    // insere depois do botão (se existir) ou no fim do form
     const btn = form.querySelector('button, input[type="submit"]');
     if (btn && btn.parentNode) btn.parentNode.insertBefore(messageEl, btn.nextSibling);
     else form.appendChild(messageEl);
   }
 
-  form.addEventListener('submit', (e) => {
+  // Evento de envio do formulário
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    handleLogin(emailInput.value.trim(), passwordInput.value.trim(), messageEl);
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (email === '' || password === '') {
+      showMessage(messageEl, 'Preencha todos os campos!', 'red');
+      return;
+    }
+
+    // Validação da senha mínima de 6 caracteres (qualquer caractere)
+    if (password.length < 6) {
+      showMessage(messageEl, 'A senha deve ter no mínimo 6 caracteres!', 'red');
+      return;
+    }
+
+    await handleLogin(email, password, messageEl);
   });
 });
 
-function handleLogin(email, password, messageEl) {
-  if (!email || !password) {
-    showMessage(messageEl, 'Preencha todos os campos!', 'red');
-    return;
-  }
-  if (!validateEmail(email)) {
-    showMessage(messageEl, 'Email inválido!', 'red');
-    return;
-  }
-
-  const found = findUserByEmail(email);
-  if (!found) {
-    showMessage(messageEl, 'Usuário não encontrado!', 'red');
-    return;
-  }
-
-  const user = found.obj;
-  const storedPassword = user.senha || user.password || user.pass;
-
-  if (!storedPassword) {
-    console.warn('Objeto de usuário não tem campo de senha:', found);
-    showMessage(messageEl, 'Erro nos dados do usuário (senha não encontrada).', 'red');
-    return;
-  }
-
-  if (storedPassword !== password) {
-    showMessage(messageEl, 'Senha incorreta!', 'red');
-    return;
-  }
-
-  // login bem-sucedido
-  showMessage(messageEl, 'Login realizado com sucesso! Redirecionando...', 'green');
+// Função de login
+async function handleLogin(email, password, messageEl) {
+  showMessage(messageEl, 'Verificando login...', 'blue');
 
   try {
-    localStorage.setItem('currentUser', JSON.stringify({ email: user.email || email, key: found.key }));
-  } catch (err) {
-    console.warn('Não foi possível salvar currentUser no localStorage:', err);
-  }
+    const response = await fetch('http://192.168.1.19:3000/Login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, senha: password }),
+    });
 
-  setTimeout(() => window.location.replace('./home.html'), 700);
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null); // tenta ler JSON, senão null
+      showMessage(messageEl, errorData?.message || `Erro: ${response.statusText}`, 'red');
+      return;
+    }
+
+    const data = await response.json();
+
+    // Login bem-sucedido
+    localStorage.setItem('id', data.id);
+    localStorage.setItem('email', data.email);
+    localStorage.setItem('nome', data.nome);
+    showMessage(messageEl, 'Login realizado com sucesso! Redirecionando...', 'green');
+    setTimeout(() => {
+      window.location.href = './home.html';
+    }, 1000); // dá tempo de mostrar a mensagem
+  } catch (error) {
+    console.error('Erro no login:', error);
+    showMessage(messageEl, 'Erro de conexão com o servidor.', 'red');
+  }
 }
 
+// Função de exibir mensagens
 function showMessage(el, text, color) {
   el.style.color = color || 'black';
   el.textContent = text;
 }
 
-function findUserByEmail(email) {
-  const emailLower = email.toLowerCase();
-
-  // tenta chaves óbvias
-  const tryKeys = ['user_' + emailLower, email];
-  for (const key of tryKeys) {
-    const raw = localStorage.getItem(key);
-    if (!raw) continue;
-    try {
-      const obj = JSON.parse(raw);
-      if (obj && typeof obj === 'object') {
-        // se o objeto tem email, checa igualdade
-        if (obj.email && obj.email.toLowerCase() === emailLower) return { key, obj };
-        // se veio do cadastro antigo que salvou só { email, senha }, também pega
-        return { key, obj };
-      }
-    } catch (err) {
-      // raw não é JSON — ignora
-    }
-  }
-
-  // varre todo localStorage procurando objeto com campo email igual
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const raw = localStorage.getItem(key);
-    try {
-      const obj = JSON.parse(raw);
-      if (obj && typeof obj === 'object' && obj.email && obj.email.toLowerCase() === emailLower) {
-        return { key, obj };
-      }
-    } catch (err) {
-      // ignora entradas não JSON
-    }
-  }
-
-  return null;
-}
-
+// Função de validar e-mail (opcional)
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;
   return re.test(email);
 }
+
+// Validação do olhinho da senha
+document.querySelectorAll('.alternar_senha').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetId = btn.getAttribute('data-target');
+    const input = document.getElementById(targetId);
+    const Password = input.type === 'password';
+    input.type = Password ? 'text' : 'password';
+    
+    btn.querySelector('.eye-closed').style.display = Password ? 'none' : 'inline';
+    btn.querySelector('.eye-open').style.display = Password ? 'inline' : 'none';
+  });
+});

@@ -1,22 +1,30 @@
-/* RESPONSIVO DESKTOP */
-@media (min-width: 768px) {
-  .chat-container { max-width: 600px; margin: 0 auto; }
+/* 🔄 RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+main{
+  display: flex;
+  justify-content: center;
+  height: 50%;
+}
 
+/* 🩵 ESTILO GERAL */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #85b5db;
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #7db9e8,);
+  color: #fff;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow-x: hidden;
 }
 
-/* HEADER */
+/* 🔹 HEADER */
 header {
-  height: 100px;
+ height: 100px;
   background-color: #0466af;
   color: #fff;
   display: flex;
@@ -24,108 +32,123 @@ header {
   justify-content: space-between;
   padding: 10px 15px;
 }
-header .logo { font-weight: bold; display: flex; align-items: center; gap: 8px; }
-header .icons { display: flex; gap: 10px; align-items: center; }
 
-/* ACESSIBILIDADE */
-.sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-
-/* CHAT */
-.chat-container {
-  flex: 1;
-  overflow-y: auto;
-  padding: 15px;
+header .logo {
+  font-weight: bold;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  gap: 10px;
 }
 
-.message { display: flex; align-items: flex-start; gap: 10px; }
-.message .avatar {
-  width: 35px; height: 35px; border-radius: 50%; background: #333;
-  flex: 0 0 35px;
+header .logo img {
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
-.bubble {
-  padding: 10px 15px;
-  border-radius: 15px;
-  color: #fff;
-  max-width: 70%;
-  line-height: 1.35;
-  word-wrap: break-word;
-  word-break: break-word;
-}
-.left .bubble  { background: #27187e; }
-.right { flex-direction: row-reverse; }
-.right .bubble { background: #3987d0; }
 
-.chat-input {
-  position: fixed;
-  bottom: 20px; /* distância do rodapé */
-  left: 50%;
-  transform: translateX(-50%);
+header .logo img:hover {
+  transform: rotate(10deg) scale(1.05);
+}
+
+/* MENU HAMBURGUER */
+.menu-container {
+  position: relative;
+}
+
+.menu-container input[type="checkbox"] {
+  display: none;
+}
+
+.hamburger {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* espaço entre input e botão */
-  width: 100%;
+  transition: transform 0.3s ease;
 }
 
-.chat-input input {
-  flex: none;         /* tira o crescimento automático */
-  width: 30%;         /* deixa o input mais curto */
-  padding: 5px 10px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  min-height: 40px;
- 
+.hamburger:hover {
+  transform: scale(1.2);
 }
 
-.chat-input button {
-  width: 44px; height: 44px;
-  display: grid; place-items: center;
-  background: #27187e; color: #fff;
-  border: none; border-radius: 50%;
-  cursor: pointer; font-size: 18px;
-}
-.chat-input button:active { transform: scale(0.98); }
-
-
-.hidden{
+.menu-items {
   display: none;
-
-}
-.menu:hover >.hidden{
-  display: flex;
   flex-direction: column;
-  position: fixed;
-  border: #000 1px solid;
-  border-radius: 10px;
-  background-color: white;
-  color: #000;
+  position: absolute;
+  top: 70px;
   left: 10px;
-  top:60px;
-  padding: 5px;
-  gap: 5px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 999;
 }
-li{
+
+.menu-items li {
   list-style: none;
-  border-bottom: #000 1px solid;
-  padding: 5px;
-  margin-bottom: 10px;
-  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  font-size: 18px;
+  transition: background 0.3s ease;
 }
-a{
+
+.menu-items li:hover {
+  background: #e6eef7;
+  border-radius: 5px;
+}
+
+.menu-items a {
   text-decoration: none;
   color: #000;
- 
+  display: block;
 }
 
-/* Bloco de notas */
+/* Abrir menu com clique */
+#menu-toggle:checked + .hamburger + .menu-items {
+  display: flex;
+}
+
+/* Também abre ao hover (opcional) */
+.menu-container:hover .menu-items {
+  display: flex;
+}
+
+/* BOTÃO TROCAR */
+#Trocar {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#Trocar:hover {
+  transform: scale(1.2);
+}
+
+/* ♿ ACESSIBILIDADE */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 💬 CHAT */
+.chat-container {
+  width: 50%;
+  height: 34rem;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 📝 BLOCO DE NOTAS */
 .modal {
   display: none;
   position: fixed;
@@ -133,145 +156,401 @@ a{
   left: 0; top: 0;
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
 }
 
 .modal-content {
-  background: #3987d0;
-  margin: 5% auto;
-  padding: 20px;
-  border-radius: 15px;
-  width: 80%;
-  max-width: 700px;
-  color: #fff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  background: #f5f5f5;
+  color: #333;
+  margin: 0 20px;
+  padding: 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
 }
 
+/* Botão fechar modal */
 .close {
-  float: right;
-  font-size: 28px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* NOTAS */
+.close:hover {
+  transform: scale(1.2);
+  color: #e74c3c;
+}
+
+/* Container de notas */
 .notes-container {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
-  margin-top: 20px;
+  width: 100%;
 }
 
+/* Card individual de nota – quadrado fixo */
 .note {
-  width: 120px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   background: #fff;
-  color: #000;
-  padding: 8px;
-  border-radius: 8px;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  color: #333;
+  padding: 10px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.note:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+
+
+/* Área de texto da nota */
 .note textarea {
   flex: 1;
   border: none;
   resize: none;
   outline: none;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   background: transparent;
+  color: #333;
 }
 
-/* AÇÕES (LÁPIS + LIXEIRA) */
+/* Botões de ação da nota */
 .note .actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 8px;
 }
 
 .note .action-btn {
-  background: #fff;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  padding: 6px;
+  font-size: 14px;
+  padding: 4px 8px;
   border-radius: 6px;
   transition: all 0.3s ease;
-  color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Ícone do lápis */
 .note .action-btn.edit {
   background: #4caf50;
   color: white;
 }
+
 .note .action-btn.edit:hover {
   background: #45a049;
   transform: scale(1.1);
 }
 
-/* Ícone da lixeira */
 .note .action-btn.delete {
   background: #f44336;
   color: white;
 }
+
 .note .action-btn.delete:hover {
   background: #d32f2f;
   transform: scale(1.1);
 }
 
-/* BOTÃO DE NOVA NOTA */
+/* Botão adicionar nota */
 .add-note {
-  margin-top: 15px;
-  font-size: 24px;
-  padding: 10px 20px;
-  border: none;
+  align-self: center;
+  font-size: 26px;
+  padding: 12px;
   border-radius: 50%;
   background: #27187e;
   color: white;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-.add-note:hover {
-  background: #27187e;
-  transform: rotate(90deg);
+  transition: all 0.3s ease;
 }
 
-/* BOTÃO FLUTUANTE DE ABRIR NOTAS */
+.add-note:hover {
+  background: #1e1363;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Botão abrir notas */
 .open-notes-btn {
   position: fixed;
-  bottom: 73px;
-  right: 20px;
-  background-color: #fff;
-  color: black;
+  bottom: 80px;
+  right: 25px;
+  background-color: #27187e;
+  color: white;
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 30px;
+  width: 55px;
+  height: 55px;
+  font-size: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease ;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
 }
 
 .open-notes-btn:hover {
-  background-color: #f1eee5;
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(15deg);
+  background-color: #1e1363;
+}
+
+
+.message-dir {
+  display: flex;
+  justify-content: right;
+  gap: 12px;
+  animation: fadeIn 0.4s ease;
+}
+.message-esq {
+  display: flex;
+  justify-content: left;
+  gap: 12px;
+  animation: fadeIn 0.4s ease;
+}
+
+.message .avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #333;
+  flex: 0 0 40px;
+}
+
+.bubble {
+  padding: 12px 16px;
+  border-radius: 18px;
+  color: #fff;
+  max-width: 75%;
+  line-height: 1.4;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+}
+
+.bubble:hover {
+  transform: scale(1.02);
+}
+
+.left .bubble  { background: #27187e; }
+.right {
+  flex-direction: row-reverse;
+}
+.right .bubble { background: #3987d0; }
+
+/* ✏️ ÁREA DE INPUT */
+.chat-input {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 40px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  max-width: 700px;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-size: 16px;
+  background: white;
+  color: #333;
+}
+
+#sendButton {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: white;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+#sendButton:hover {
+  transform: scale(1.08);
+}
+
+/* 📝 BLOCO DE NOTAS */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-content {
+  background: #3987d0;
+  margin: 6% auto;
+  padding: 25px;
+  border-radius: 20px;
+  width: 85%;
+  max-width: 700px;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.close:hover {
+  transform: scale(1.2);
+  color: #ffdddd;
+}
+
+/* ➕ BOTÕES */
+.add-note, .open-notes-btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.add-note:hover {
+  transform: rotate(90deg);
+}
+
+.open-notes-btn:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+/* ✨ ANIMAÇÕES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVIDADE GERAL */
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  header .logo img {
+    width: 70px;
+    height: 70px;
+  }
+
+  header .menu svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .chat-container {
+    padding: 15px;
+    padding-bottom: 140px; /* espaço para input fixo */
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .chat-input {
+    width: calc(100% - 30px);
+    max-width: none;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+  }
+
+  .chat-input input {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  #sendButton {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .open-notes-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 28px;
+    bottom: 80px;
+    right: 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  .notes-container {
+    gap: 10px;
+  }
+
+  .note {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* RESPONSIVIDADE MUITO PEQUENA */
+@media (max-width: 400px) {
+  header .logo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .chat-input {
+    width: calc(100% - 20px);
+  }
+
+  .chat-input input {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  #sendButton {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .note {
+    width: 110px;
+    height: 110px;
+  }
 }

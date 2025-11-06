@@ -3,7 +3,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:  #ddd4bb;
+    background-color:  #27187e;
     min-height: 100vh;
     margin: 0;
 }
@@ -69,14 +69,14 @@ body{
     height: 50px;
     font-size: 20px;
     border-radius: 8px;
-    color: #fff;
+    color: #000;
     border: none;
-    background-color: #27187e;
+    background-color: #ddd4bb;
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     display: block;
     margin: 0 auto;
 }
 #button:hover{
-    background-color: #3275b8;
+    background-color: #f6f1e3;
 }

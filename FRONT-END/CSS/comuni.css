@@ -75,6 +75,75 @@ background-color:#f1eee5;
   pointer-events: none;
 }
 
+header {
+  height: 120px;
+  background-color: #27187e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo img {
+  display: block;
+}
+
+/* 🔹 Ícone / foto de perfil dinâmico */
+.perfil-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil-foto {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  overflow: hidden; /* garante que a imagem não vaze */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.perfil-foto:hover {
+  transform: scale(1.1);
+  background: #ffcc00;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* imagem dentro do círculo */
+.perfil-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Remover sublinhado do link */
+.perfil-icon a {
+  text-decoration: none;
+}
+
+
+/* Responsividade */
+@media (max-width: 600px) {
+  header {
+    padding: 0 20px;
+  }
+
+  .perfil-foto {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
 
 header {
   height: 120px;

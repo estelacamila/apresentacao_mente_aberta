@@ -12,33 +12,39 @@
 </head>
 
 <body>
-  <header>
-    <div class="menu-container">
-      <input type="checkbox" id="menu-toggle" />
-      <label for="menu-toggle" class="hamburger">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" fill="currentColor" class="bi bi-list"
-          viewBox="0 0 16 16" role="img" aria-label="Menu">
-          <path fill-rule="evenodd"
-            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-        </svg>
-      </label>
+ <header>
+  <div class="menu-container">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="hamburger">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" fill="currentColor" class="bi bi-list"
+        viewBox="0 0 16 16" role="img" aria-label="Menu">
+        <path fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+      </svg>
+    </label>
 
-      <ul class="menu-items">
-        <li id="inicio"><a href="../HTML/index.html">Início</a></li>
-        <li id="videos"><a href="../HTML/video.html">Vídeos</a></li>
-        <li id="comunidade"><a href="../HTML/comuni.html">Comunidade</a></li>
-        <li id="perfil"><a href="../HTML/perfil.html">Perfil</a></li>
-        <li id="sair"><a href="../HTML/login.html">Sair</a></li>
-      </ul>
+    <ul class="menu-items">
+      <li id="inicio"><a href="../HTML/index.html">Início</a></li>
+      <li id="videos"><a href="../HTML/video.html">Vídeos</a></li>
+      <li id="comunidade"><a href="../HTML/comuni.html">Comunidade</a></li>
+      <li id="perfil"><a href="../HTML/perfil.html">Perfil</a></li>
+      <li id="sair"><a href="../HTML/login.html">Sair</a></li>
+    </ul>
+  </div>
+
+  <div class="logo">
+    <img src="../IMG/logo_principal (3).png" alt="logo" width="120" height="120" />
+  </div>
+
+ <div class="perfil-icon">
+  <a href="../HTML/perfil.html" title="Meu Perfil">
+    <div class="perfil-foto">
+      <img id="imgPerfil" src="../IMG/default-user.svg" alt="Foto de perfil" />
     </div>
+  </a>
+</div>
+</header>
 
-    <div class="logo">
-      <img src="../IMG/logo_principal (3).png" alt="logo" width="120" height="120" />
-    </div>
-    <div></div>
-
- 
-  </header>
 
   <main>
     <div id="chatContainer" class="chat-container"></div>

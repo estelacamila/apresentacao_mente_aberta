@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-      const response = await fetch(`http://192.168.1.40:3000/Perfil/${id}`, {
+      const response = await fetch(`https://back-render-vpda.onrender.com/Perfil/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nome, senha, foto }),

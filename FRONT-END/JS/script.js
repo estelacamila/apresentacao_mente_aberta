@@ -92,9 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
       texto: `O luto é o amor em reorganização. 🕊️
 👉 Permita-se sentir e compartilhar lembranças.`,
     },
-    autismo: {
-      titulo: "Autismo",
-      texto: `O autismo é um jeito único de experienciar o mundo. 💫`,
+     raiva: {
+      titulo: "Raiva intensa",
+      texto: `A raiva intensa nem sempre é falta de controle — às vezes é um coração sobrecarregado. 💭
+👉 Mantenha a calma, fale com leveza e dê tempo para a pessoa se recompor.
+A tranquilidade de quem apoia pode ser o primeiro passo para o equilíbrio. 🌿`
     },
     conflitos: {
       titulo: "Conflitos familiares",

@@ -181,7 +181,7 @@ A tranquilidade de quem apoia pode ser o primeiro passo para o equilíbrio. 🌿
     const updateNote = debounce(async () => {
       try {
         if (!nota.id && textarea.value.trim() !== "") {
-          const res = await fetch("http://192.168.1.40:3000/Notas", {
+          const res = await fetch("https://back-render-vpda.onrender.com/Notas", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -192,7 +192,7 @@ A tranquilidade de quem apoia pode ser o primeiro passo para o equilíbrio. 🌿
           const nova = await res.json();
           nota.id = nova.id;
         } else if (nota.id) {
-          await fetch(`http://192.168.1.40:3000/Notas/${nota.id}`, {
+          await fetch(`https://back-render-vpda.onrender.com/Notas/${nota.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ conteudo: textarea.value }),
@@ -213,7 +213,7 @@ A tranquilidade de quem apoia pode ser o primeiro passo para o equilíbrio. 🌿
         return;
       }
       try {
-        const res = await fetch(`http://192.168.1.40:3000/Notas/${nota.id}`, {
+        const res = await fetch(`https://back-render-vpda.onrender.com/Notas/${nota.id}`, {
           method: "DELETE",
         });
         if (!res.ok) throw new Error("Erro ao excluir nota");

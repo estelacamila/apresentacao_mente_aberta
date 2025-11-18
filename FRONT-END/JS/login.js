@@ -56,7 +56,7 @@ async function handleLogin(email, password, messageEl) {
   showMessage(messageEl, 'Verificando login...', 'blue');
 
   try {
-    const response = await fetch('http://192.168.1.19:3000/Login', {
+    const response = await fetch('https://back-render-vpda.onrender.com/Login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, senha: password }),

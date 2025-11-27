@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mente Saudável</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="menu-container">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" fill="currentColor" class="bi bi-list"
+          viewBox="0 0 16 16" role="img" aria-label="Menu">
+          <path fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+        </svg>
+      </label>
+
+      <ul class="menu-items">
+        <li id="inicio"><a href="../HTML/index.html">Início</a></li>
+        <li id="videos"><a href="../HTML/video.html">Vídeos</a></li>
+        <li id="comunidade"><a href="../HTML/comuni.html">Comunidade</a></li>
+        <li id="perfil"><a href="../HTML/perfil.html">Perfil</a></li>
+        <li id="sair"><a href="../HTML/login.html">Sair</a></li>
+      </ul>
+    </div>
+
+    <div class="logo">
+      <img src="../IMG/logo_principal (3).png" alt="logo" width="120" height="120" />
+    </div>
+
+   <div class="icone-perfil">
+      <a href="../HTML/perfil.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="gray" class="bi bi-person-fill" viewBox="0 0 16 16">
+      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+      </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Seção principal -->
+  <section class="intro-section">
+    <div class="intro-text">
+      <div class="text-content">
+        <h2>🧠 A importância de conversar e cuidar da mente</h2>
+        <p>
+          Cuidar da saúde mental é tão importante quanto cuidar do corpo. Todos nós passamos por momentos difíceis — e o diálogo é um dos nossos maiores aliados. 
+          Falar sobre o que sentimos alivia o peso das emoções e nos faz enxergar novas formas de enfrentar os desafios.
+       <br></br>
+          Conversar com alguém, ouvir e ser ouvido cria laços verdadeiros e fortalece o apoio mútuo. É através da empatia que encontramos leveza e acolhimento. 
+          Falar é o primeiro passo para se sentir melhor — e nunca é tarde para começar.
+        </p>
+
+      </div>
+    </div>
+
+    <div class="right-side">
+      <!-- Carrossel -->
+      <div class="carousel">
+        <div class="carousel-container">
+          <div class="slide active"><img src="../IMG/image (5).png" alt="Motivacional 1"></div>
+          <div class="slide"><img src="../IMG/image (9).png" alt="Motivacional 2"></div>
+          <div class="slide"><img src="../IMG/image (6).png" alt="Motivacional 3"></div>
+           <div class="slide"><img src="../IMG/image (4).png" alt="Motivacional 4"></div>
+            <div class="slide"><img src="../IMG/image (1).png" alt="Motivacional 5"></div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emojis centralizados -->
+  <div class="humor-row">
+    <div class="humor">
+      <h3>Como você está hoje?</h3>
+      <div class="emojis">
+        <span class="emoji" data-msg="Que bom te ver sorrindo! 😄">😊</span>
+        <span class="emoji" data-msg="Rir é o melhor remédio! 😂">😂</span>
+        <span class="emoji" data-msg="Respire fundo e siga em frente 💛">😌</span>
+        <span class="emoji" data-msg="Está tudo bem sentir-se assim 💙">😢</span>
+        <span class="emoji" data-msg="Tudo bem não estar bem às vezes ❤️">😡</span>
+      </div>
+      <p id="humorMessage"></p>
+    </div>
+    <br>
+  </div>
+
+
+  <!-- Cards informativos -->
+  <section class="cards">
+    <div class="card" data-topic="ansiedade"><h3>Ansiedade</h3></div>
+    <div class="card" data-topic="depressao"><h3>Depressão</h3></div>
+    <div class="card" data-topic="luto"><h3>Luto</h3></div>
+    <div class="card" data-topic="raiva"><h3>Raiva intensa</h3></div>
+    <div class="card" data-topic="conflitos"><h3>Conflitos familiares</h3></div>
+  </section>
+
+  <!-- Modal de dicas -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span id="closeInfoModal" class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+ 
+
+  <!-- Rodapé -->
+  <footer>
+    <div id="text">  <img src="../IMG/logo_principal (3).png" alt="logo" width="120" height="120" />
+    </div>
+    <div>
+      <p>“Você nunca está sozinho nessa jornada 💙”</p>
+      <a href="../HTML/comuni.html" class="footer-btn">Converse conosco</a>
+    </div>
+    <div id="canto"></div>
+
+  </footer>
+
+  <script src="../JS/script.js"></script>
+</body>
+</html>
